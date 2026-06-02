@@ -131,10 +131,18 @@ function App() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    setProjects([]);
+    setTasks({});
+  };
+
   if (isLoggedIn) {
     return (
       <div>
         <h1>Pro-Tasker Dashboard</h1>
+        <button onClick={handleLogout}>Logout</button>
 
         <form onSubmit={createProject}>
           <h2>Create Project</h2>
