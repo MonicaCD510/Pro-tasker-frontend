@@ -7,6 +7,7 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [projects, setProjects] = useState([]);
+  const [tasks, setTasks] = useState({});
 
   const [projectName, setProjectName] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
@@ -78,6 +79,29 @@ function App() {
     }
   };
 
+  const getTasks = async (projectId) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await axios.get(
+        `http://localhost:3000/api/tasks/project/${projectId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setTasks({
+        ...tasks,
+        [projectId]: response.data,
+      });
+    } catch (err) {
+      alert("Could not load tasks");
+      console.error(err);
+    }
+  };
+
   const createTask = async (projectId) => {
     try {
       const token = localStorage.getItem("token");
@@ -99,6 +123,7 @@ function App() {
       setTaskTitle("");
       setTaskDescription("");
       setTaskStatus("To Do");
+      getTasks(projectId);
       alert("Task created!");
     } catch (err) {
       alert("Could not create task");
@@ -148,6 +173,8 @@ function App() {
             <h3>{project.name}</h3>
             <p>{project.description}</p>
 
+            <button onClick={() => getTasks(project._id)}>Load Tasks</button>
+
             <h4>Create Task</h4>
 
             <input
@@ -183,6 +210,17 @@ function App() {
             <br />
 
             <button onClick={() => createTask(project._id)}>Create Task</button>
+
+            <h4>Tasks</h4>
+
+            {(tasks[project._id] || []).map((task) => (
+              <div key={task._id}>
+                <p>
+                  <strong>{task.title}</strong> - {task.status}
+                </p>
+                <p>{task.description}</p>
+              </div>
+            ))}
 
             <hr />
           </div>
