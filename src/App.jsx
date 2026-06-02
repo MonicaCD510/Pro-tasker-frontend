@@ -11,6 +11,10 @@ function App() {
   const [projectName, setProjectName] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
 
+  const [taskTitle, setTaskTitle] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
+  const [taskStatus, setTaskStatus] = useState("To Do");
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -74,6 +78,34 @@ function App() {
     }
   };
 
+  const createTask = async (projectId) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      await axios.post(
+        `http://localhost:3000/api/tasks/project/${projectId}`,
+        {
+          title: taskTitle,
+          description: taskDescription,
+          status: taskStatus,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setTaskTitle("");
+      setTaskDescription("");
+      setTaskStatus("To Do");
+      alert("Task created!");
+    } catch (err) {
+      alert("Could not create task");
+      console.error(err);
+    }
+  };
+
   if (isLoggedIn) {
     return (
       <div>
@@ -115,6 +147,44 @@ function App() {
           <div key={project._id}>
             <h3>{project.name}</h3>
             <p>{project.description}</p>
+
+            <h4>Create Task</h4>
+
+            <input
+              type="text"
+              placeholder="Task title"
+              value={taskTitle}
+              onChange={(e) => setTaskTitle(e.target.value)}
+            />
+
+            <br />
+            <br />
+
+            <input
+              type="text"
+              placeholder="Task description"
+              value={taskDescription}
+              onChange={(e) => setTaskDescription(e.target.value)}
+            />
+
+            <br />
+            <br />
+
+            <select
+              value={taskStatus}
+              onChange={(e) => setTaskStatus(e.target.value)}
+            >
+              <option value="To Do">To Do</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Done">Done</option>
+            </select>
+
+            <br />
+            <br />
+
+            <button onClick={() => createTask(project._id)}>Create Task</button>
+
+            <hr />
           </div>
         ))}
       </div>
