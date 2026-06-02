@@ -8,16 +8,16 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [projects, setProjects] = useState([]);
 
+  const [projectName, setProjectName] = useState("");
+  const [projectDescription, setProjectDescription] = useState("");
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.post(
         "http://localhost:3000/api/users/login",
-        {
-          email,
-          password,
-        }
+        { email, password }
       );
 
       localStorage.setItem("token", response.data.token);
@@ -46,10 +46,66 @@ function App() {
     }
   };
 
+  const createProject = async (e) => {
+    e.preventDefault();
+
+    try {
+      const token = localStorage.getItem("token");
+
+      await axios.post(
+        "http://localhost:3000/api/projects",
+        {
+          name: projectName,
+          description: projectDescription,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setProjectName("");
+      setProjectDescription("");
+      getProjects();
+    } catch (err) {
+      alert("Could not create project");
+      console.error(err);
+    }
+  };
+
   if (isLoggedIn) {
     return (
       <div>
         <h1>Pro-Tasker Dashboard</h1>
+
+        <form onSubmit={createProject}>
+          <h2>Create Project</h2>
+
+          <input
+            type="text"
+            placeholder="Project name"
+            value={projectName}
+            onChange={(e) => setProjectName(e.target.value)}
+          />
+
+          <br />
+          <br />
+
+          <input
+            type="text"
+            placeholder="Project description"
+            value={projectDescription}
+            onChange={(e) => setProjectDescription(e.target.value)}
+          />
+
+          <br />
+          <br />
+
+          <button type="submit">Create Project</button>
+        </form>
+
+        <hr />
 
         <button onClick={getProjects}>Load Projects</button>
 
