@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "./App.css";
 
 const API_URL = "https://pro-tasker-1w72.onrender.com";
 
@@ -142,7 +143,7 @@ function App() {
 
   if (isLoggedIn) {
     return (
-      <div>
+      <div className="container">
         <h1>Pro-Tasker Dashboard</h1>
         <button onClick={handleLogout}>Logout</button>
 
@@ -179,7 +180,7 @@ function App() {
         <h2>My Projects</h2>
 
         {projects.map((project) => (
-          <div key={project._id}>
+          <div key={project._id} className="project-card">
             <h3>{project.name}</h3>
             <p>{project.description}</p>
 
@@ -224,7 +225,7 @@ function App() {
             <h4>Tasks</h4>
 
             {(tasks[project._id] || []).map((task) => (
-              <div key={task._id}>
+              <div key={task._id} className="task-item">
                 <p>
                   <strong>{task.title}</strong> - {task.status}
                 </p>
