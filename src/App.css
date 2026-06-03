@@ -5,20 +5,25 @@ body {
 }
 
 .container {
-  max-width: 900px;
+  max-width: 700px;
   margin: 0 auto;
-  padding: 30px 20px;
+  padding: 16px;
 }
 
-h1 {
+h1,
+h2,
+h3,
+h4 {
   text-align: center;
+  color: #222;
+  margin: 10px 0;
 }
 
 form,
 .project-card {
   background: white;
-  padding: 20px;
-  margin: 20px 0;
+  padding: 16px;
+  margin: 14px 0;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -27,25 +32,26 @@ input,
 select {
   width: 100%;
   padding: 10px;
-  margin: 8px 0 14px;
+  margin: 4px 0 8px;
   box-sizing: border-box;
 }
 
 button {
-  padding: 10px 16px;
+  display: block;
+  margin: 10px auto;
+  padding: 9px 14px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  margin: 6px 4px 6px 0;
 }
 
 hr {
-  margin: 25px 0;
+  margin: 18px 0;
 }
 
 .task-item {
   background: #f8f8f8;
+  border-left: 4px solid #2563eb;
   padding: 10px;
-  border-left: 4px solid #333;
   margin: 10px 0;
 }

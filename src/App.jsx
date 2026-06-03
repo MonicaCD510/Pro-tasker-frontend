@@ -241,7 +241,7 @@ function App() {
   }
 
   return (
-    <div>
+  <div className="container">
       <h1>Pro-Tasker</h1>
       <h2>Login</h2>
 
