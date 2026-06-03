@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
+const API_URL = "https://pro-tasker-1w72.onrender.com";
+
 function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,10 +22,10 @@ function App() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/users/login",
-        { email, password }
-      );
+      const response = await axios.post(`${API_URL}/api/users/login`, {
+        email,
+        password,
+      });
 
       localStorage.setItem("token", response.data.token);
       setIsLoggedIn(true);
@@ -38,7 +40,7 @@ function App() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.get("http://localhost:3000/api/projects", {
+      const response = await axios.get(`${API_URL}/api/projects`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -58,7 +60,7 @@ function App() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:3000/api/projects",
+        `${API_URL}/api/projects`,
         {
           name: projectName,
           description: projectDescription,
@@ -84,7 +86,7 @@ function App() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        `http://localhost:3000/api/tasks/project/${projectId}`,
+        `${API_URL}/api/tasks/project/${projectId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -107,7 +109,7 @@ function App() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        `http://localhost:3000/api/tasks/project/${projectId}`,
+        `${API_URL}/api/tasks/project/${projectId}`,
         {
           title: taskTitle,
           description: taskDescription,
