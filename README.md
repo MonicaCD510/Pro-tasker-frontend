@@ -1,16 +1,87 @@
-# React + Vite
+# Pro-Tasker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+Pro-Tasker is a full-stack task management application built using the MERN stack. The application allows users to register, log in securely, and manage personal tasks through a web-based interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This project demonstrates full-stack development concepts including React, Express, MongoDB, REST APIs, authentication, deployment, and GitHub version control.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* User Registration
+* User Login
+* Secure Authentication
+* Create Tasks
+* View Tasks
+* Update Tasks
+* Delete Tasks
+* Full-Stack Deployment on Render
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+
+* React
+* Vite
+* JavaScript
+* Axios
+* CSS
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB Atlas
+* Mongoose
+* JWT Authentication
+* bcrypt
+
+### Deployment
+
+* Render
+* GitHub
+
+## Application Architecture
+
+### Frontend Repository
+
+https://github.com/MonicaCD510/Pro-tasker-frontend
+
+### Backend Repository
+
+https://github.com/MonicaCD510/Pro-tasker
+
+### Frontend Deployment
+
+https://pro-tasker-frontend-yolr.onrender.com
+
+### Backend Deployment
+
+https://pro-tasker-1w72.onrender.com
+
+## User Workflow
+
+1. User registers an account.
+2. User logs into the application.
+3. User creates new tasks.
+4. User views existing tasks.
+5. User updates task information.
+6. User deletes completed tasks.
+7. Task data is stored in MongoDB Atlas.
+
+## Challenges
+
+One of the primary challenges during development was configuring communication between the frontend and backend after deployment. Additional challenges included MongoDB Atlas connectivity, environment variable configuration, and deployment troubleshooting using Render.
+
+## Future Enhancements
+
+* Task priorities
+* Due dates
+* Task categories
+* Search and filtering
+* Improved user interface
+
+## Author
+
+Monica Davila
+
