@@ -144,7 +144,10 @@ function App() {
   if (isLoggedIn) {
     return (
       <div className="container">
-        <h1>Pro-Tasker Dashboard</h1>
+        <div className="dashboard-header">
+          <h1>Pro-Tasker Dashboard</h1>
+        </div>
+
         <button onClick={handleLogout}>Logout</button>
 
         <form onSubmit={createProject}>
@@ -157,18 +160,12 @@ function App() {
             onChange={(e) => setProjectName(e.target.value)}
           />
 
-          <br />
-          <br />
-
           <input
             type="text"
             placeholder="Project description"
             value={projectDescription}
             onChange={(e) => setProjectDescription(e.target.value)}
           />
-
-          <br />
-          <br />
 
           <button type="submit">Create Project</button>
         </form>
@@ -195,18 +192,12 @@ function App() {
               onChange={(e) => setTaskTitle(e.target.value)}
             />
 
-            <br />
-            <br />
-
             <input
               type="text"
               placeholder="Task description"
               value={taskDescription}
               onChange={(e) => setTaskDescription(e.target.value)}
             />
-
-            <br />
-            <br />
 
             <select
               value={taskStatus}
@@ -216,9 +207,6 @@ function App() {
               <option value="In Progress">In Progress</option>
               <option value="Done">Done</option>
             </select>
-
-            <br />
-            <br />
 
             <button onClick={() => createTask(project._id)}>Create Task</button>
 
@@ -241,33 +229,32 @@ function App() {
   }
 
   return (
-  <div className="container">
+    <div className="container">
       <h1>Pro-Tasker</h1>
-      <h2>Login</h2>
 
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <p className="subtitle">Organize projects and track tasks</p>
 
-        <br />
-        <br />
+      <div className="login-card">
+        <form onSubmit={handleLogin}>
+          <h2>Login</h2>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <br />
-        <br />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <button type="submit">Login</button>
-      </form>
+          <button type="submit">Login</button>
+        </form>
+      </div>
     </div>
   );
 }

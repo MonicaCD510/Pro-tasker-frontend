@@ -1,57 +1,114 @@
 body {
+  background: hotpink !important;
+}
+
+
+
+body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f4f6f8;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  color: #1f2937;
 }
 
 .container {
-  max-width: 700px;
+  max-width: 850px;
   margin: 0 auto;
-  padding: 16px;
+  padding: 24px;
 }
 
-h1,
-h2,
+.dashboard-header {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 52px;
+  margin: 10px 0;
+  color: #1e3a8a;
+  font-weight: 700;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 18px;
+  color: #111827;
+}
+
 h3,
 h4 {
-  text-align: center;
-  color: #222;
-  margin: 10px 0;
+  color: #111827;
 }
 
 form,
 .project-card {
   background: white;
-  padding: 16px;
-  margin: 14px 0;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  margin: 20px auto;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.project-card {
+  border-top: 4px solid #2563eb;
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
 }
 
 input,
 select {
   width: 100%;
-  padding: 10px;
-  margin: 4px 0 8px;
+  padding: 12px;
+  margin: 8px 0 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
   box-sizing: border-box;
+  font-size: 15px;
 }
 
 button {
   display: block;
-  margin: 10px auto;
-  padding: 9px 14px;
+  margin: 12px auto;
+  padding: 12px 18px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #1d4ed8;
 }
 
 hr {
-  margin: 18px 0;
+  border: none;
+  border-top: 1px solid #d1d5db;
+  margin: 24px 0;
+}
+
+p {
+  color: #4b5563;
 }
 
 .task-item {
-  background: #f8f8f8;
-  border-left: 4px solid #2563eb;
-  padding: 10px;
+  background: #eff6ff;
+  border-left: 5px solid #2563eb;
+  padding: 12px;
   margin: 10px 0;
+  border-radius: 8px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #64748b;
+  font-size: 14px;
 }
