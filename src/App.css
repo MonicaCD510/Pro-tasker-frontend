@@ -1,10 +1,4 @@
 body {
-  background: hotpink !important;
-}
-
-
-
-body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #eef2ff, #f8fafc);
@@ -40,6 +34,18 @@ h2 {
 h3,
 h4 {
   color: #111827;
+}
+
+.subtitle {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 25px;
+  font-size: 16px;
+}
+
+.login-card {
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 form,
